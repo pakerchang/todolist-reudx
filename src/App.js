@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Box, ThemeProvider, Typography } from "@material-ui/core";
+import { customStyle, customTheme } from "./styles/CustomTheme";
+import AddTodo from "./components/AddTodo/AddTodo";
+import TodoList from "./components/TodoList/TodoList";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const classes = customStyle();
+	return (
+		<ThemeProvider theme={customTheme}>
+			<div className={classes.root}>
+				<Box mb={4}>
+					<Typography variant="h4" align="center">
+						Todo List
+					</Typography>
+				</Box>
+				<AddTodo />
+				<div className={classes.taskList}>
+					<TodoList />
+				</div>
+			</div>
+		</ThemeProvider>
+	);
 }
 
 export default App;
